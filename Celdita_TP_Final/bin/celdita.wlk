@@ -4,7 +4,7 @@ import wollok.game.*
 
 object celdita {
 	method iniciar() {
-		game.addVisualCharacter(personaje)
+		game.addVisualCharacter(tomas)
 		config.configurarTeclas()
 		config.configurarColisiones()
 	}
@@ -12,11 +12,10 @@ object celdita {
 
 object config {
 	method configurarTeclas() {
-		keyboard.z().onPressDo() //Tecla para pelar
-		//teclas para que los monstruos se muevan
+		keyboard.z().onPressDo() //Tecla para abrir cofre
 	}
 	
 	method configurarColisiones() {
-		game.onCollideDo (personaje, { algo => algo.teLibera(personaje)})
+		//game.onCollideDo (tomas, { algo => algo.teLibera(tomas)})
 	}
 }

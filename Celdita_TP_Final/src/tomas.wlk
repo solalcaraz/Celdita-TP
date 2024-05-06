@@ -15,7 +15,7 @@ object tomas {
 	//Configurar posicion
 	//var property position
 	
-	//Obtener posimas
+	//Obtener pocion
 	method agarrar(pocion){ 
 		if (mochila.size() < capacidad){
 			mochila.add(pocion)
@@ -24,7 +24,7 @@ object tomas {
 		}
 	}
 	
-	//Usar las posimas
+	//Usar las pociones
 	method usarPocion(){
 		if (mochila.isNotEmpty()){
 			mochila.first().activar()
