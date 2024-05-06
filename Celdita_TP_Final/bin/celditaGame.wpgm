@@ -1,6 +1,16 @@
+import wollok.game.*
+import celdita.*
+import tomas.* 
+import monstruos.*
 
-program abc {
-
-	console.println('Hello Wollok')
-
+program celditaGame {
+	game.title("Celdita")
+	game.height(15)
+	game.width(15)
+	//game.ground("fondo.jpg")
+	
+	//COMIENZO
+	//menu.iniciar()
+	celdita.iniciar()
+	game.start()
 }

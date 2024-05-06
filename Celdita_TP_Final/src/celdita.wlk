@@ -1,10 +1,10 @@
 import tomas.*
-import extras.*
+import extra.*
 import wollok.game.*
 
 object celdita {
 	method iniciar() {
-		game.addVisualCharacter(tomas)
+		game.addVisualCharacter(personaje)
 		config.configurarTeclas()
 		config.configurarColisiones()
 	}
@@ -17,6 +17,6 @@ object config {
 	}
 	
 	method configurarColisiones() {
-		game.onCollideDo (tomas, { algo => algo.teLibera(tomas)})
+		game.onCollideDo (personaje, { algo => algo.teLibera(personaje)})
 	}
 }
