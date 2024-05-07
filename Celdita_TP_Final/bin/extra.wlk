@@ -6,6 +6,7 @@ object espada {
 	
 	method image() = "espada.png"
 	method esEncontrado(personaje) {}
+	method desaparecer(){ game.removeVisual(self)}
 }
 object aldeano {
 	var property position = game.center()

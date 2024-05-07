@@ -48,7 +48,7 @@ object tomas {
 		} else {
 			game.say(self, "No puedo cargar más")
 		}
-		game.removeVisual(objeto)
+		objeto.desaparecer()
 	}
 	
 //Usar pociones

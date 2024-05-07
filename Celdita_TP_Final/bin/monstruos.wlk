@@ -1,8 +1,14 @@
+import wollok.game.*
+import pocion.*
+
 //dañan a tomas con esAtacado(daño)
 class Monstruos {
 	var vida
 	var poderBase
 	var pocion
+	
+	var property position = game.center()
+	
 	//Para chequear las posiciones para la pocion
 	const property zonaAtaque = []
 	
