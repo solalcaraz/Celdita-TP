@@ -1,14 +1,17 @@
+//dañan a tomas con esAtacado(daño)
 class Monstruos {
 	var vida
 	var poderBase
-	var pocion	
+	var pocion
+	//Para chequear las posiciones para la pocion
+	const property zonaAtaque = []
 	
 	method recibirDanio(danio){
 		vida -= danio
 		if(vida <= 0){ self.morir()}
 	}
 	method morir(){	}
-	method soltarPocion(pocion){
+	method soltarPocion(tipo){
 		//mostrar pocion en el mapa
 	}
 }

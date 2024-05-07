@@ -1,58 +1,82 @@
 import wollok.game.*
 import monstruos.*
+import pocion.*
 import extra.*
 
-object tomas {
-	const property mochila = []
+object tomas {	
+	var property mochila = []
 	var property capacidad = 3
-	var espada = false
 	
 	var property vivo = true
 	var property vida = 100
 	
-	var property poderBase = 5
+	var property tieneEspada = false
+	//var property poderBase = 5
 	
-	//Configurar posicion
-	//var property position
+//Configurar posicion e imagen
+	var property position = game.at(0, 4)
 	
-	//Obtener pocion
-	method agarrar(pocion){ 
-		if (mochila.size() < capacidad){
-			mochila.add(pocion)
-		} else {
-			game.say(self, "No puedo cargar más")
+	method image() = "tomas_basico.png"
+	method estaEnTablero(posicion) = posicion.x().between(0, 19) and posicion.y().between(0, 9)
+	//Verificar que el movimiento sea legal, que no haya obstaculos y que no ocupe el mismo lugar que el monstruo
+	method procesarMovimiento(){}
+	method moverseA(nuevaPosicion) {
+		if (self.estaEnTablero(nuevaPosicion) and vivo){
+			position = nuevaPosicion		
 		}
 	}
 	
-	//Usar las pociones
-	method usarPocion(){
-		if (mochila.isNotEmpty()){
-			mochila.first().activar()
-			mochila.remove(mochila.first())		
-		} else { game.say(self, "No tengo pociones")}
-	}
-	
-	//Obtener espada
-	method agarrarEspada(){	espada = true}
-	
-	//Mata monstruos 
-	method atacar(monstruo) {
-		if(espada){
-			monstruo.recibirDanio(poderBase)
-		} else {
-			monstruo.recibirDanio(poderBase/2)
-		}
-	}
-	
-	//Vida del personaje
-	method estaHerido(danio) {
+//Vida del personaje
+	method esAtacado(danio) {
 		vida -= danio 
-		if(vida <= 0) {self.morir()}
+		if(vida <= 0) { self.morir()}
 	}
 	method morir() {
 		vivo = false
 		game.say(self, "Has muerto!")
-		game.schedule(5000, {game.stop()})
+		game.removeVisual(self)
+		//Podriamos volver al menu en vez de frenar el juego
+		game.schedule(5000, { game.stop()})
 	}
-}
 
+//Agarrar objetos
+	method agarrar(objeto){
+		if (objeto == espada){
+			tieneEspada = true
+		} else if (mochila.size() < capacidad){
+			mochila.add(objeto)
+		} else {
+			game.say(self, "No puedo cargar más")
+		}
+		game.removeVisual(objeto)
+	}
+	
+//Usar pociones
+	method usarPocionUno(){
+		if (mochila.isNotEmpty()){
+			mochila.get(0).activar()
+			mochila.remove(mochila.get(0))
+		} else { game.say(self, "No tengo pociones")}
+	}
+	method usarPocionDos(){
+		if (mochila.isNotEmpty()){
+			mochila.get(1).activar()
+			mochila.remove(mochila.get(1))
+		} else { game.say(self, "No tengo pociones")}
+	}
+	method usarPocionTres(){
+		if (mochila.isNotEmpty()){
+			mochila.get(2).activar()
+			mochila.remove(mochila.get(2))
+		} else { game.say(self, "No tengo pociones")}
+	}
+	
+//Matar monstruos 
+	method atacar() {
+		//if(tieneEspada){
+			//monstruo.recibirDanio(poderBase)
+		//} else {
+			//monstruo.recibirDanio(poderBase/2)
+		//}
+	}	
+}

@@ -1,15 +1,14 @@
 import wollok.game.*
 import celdita.*
-import tomas.* 
-import monstruos.*
+//import menu.*
 
 program celditaGame {
 	game.title("Celdita")
-	game.height(15)
-	game.width(15)
-	//game.ground("fondo.jpg")
+	game.height(10)
+	game.width(20)
+	game.boardGround("fondo_bosque.jpg")
 	
-	//COMIENZO
+//COMIENZO
 	//menu.iniciar()
 	celdita.iniciar()
 	game.start()
