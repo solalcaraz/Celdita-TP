@@ -11,7 +11,7 @@ object tomas {
 	var property vida = 100
 	
 	var property tieneEspada = false
-	//var property poderBase = 5
+	var property poderBase = 5
 	
 //Configurar posicion e imagen
 	var property position = game.at(0, 4)
@@ -20,6 +20,7 @@ object tomas {
 	method estaEnTablero(posicion) = posicion.x().between(0, 19) and posicion.y().between(0, 9)
 	//Verificar que el movimiento sea legal, que no haya obstaculos y que no ocupe el mismo lugar que el monstruo
 	method procesarMovimiento(){}
+	
 	method moverseA(nuevaPosicion) {
 		if (self.estaEnTablero(nuevaPosicion) and vivo){
 			position = nuevaPosicion		
@@ -52,22 +53,10 @@ object tomas {
 	}
 	
 //Usar pociones
-	method usarPocionUno(){
+	method usarPocion(numero){
 		if (mochila.isNotEmpty()){
-			mochila.get(0).activar()
-			mochila.remove(mochila.get(0))
-		} else { game.say(self, "No tengo pociones")}
-	}
-	method usarPocionDos(){
-		if (mochila.isNotEmpty()){
-			mochila.get(1).activar()
-			mochila.remove(mochila.get(1))
-		} else { game.say(self, "No tengo pociones")}
-	}
-	method usarPocionTres(){
-		if (mochila.isNotEmpty()){
-			mochila.get(2).activar()
-			mochila.remove(mochila.get(2))
+			mochila.get(numero).activar()
+			mochila.remove(mochila.get(numero))
 		} else { game.say(self, "No tengo pociones")}
 	}
 	

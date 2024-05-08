@@ -24,9 +24,9 @@ object config {
 		//Para atacar, REVISAR
 		keyboard.m().onPressDo({ tomas.atacar()})
 		//Para usar las pociones
-		keyboard.num1().onPressDo({ tomas.usarPocionUno()})
-		keyboard.num2().onPressDo({ tomas.usarPocionDos()})
-		keyboard.num3().onPressDo({ tomas.usarPocionTres()})
+		keyboard.num1().onPressDo({ tomas.usarPocion(0)})
+		keyboard.num2().onPressDo({ tomas.usarPocion(1)})
+		keyboard.num3().onPressDo({ tomas.usarPocion(2)})
 	}
 	method configurarColision(){
 		game.onCollideDo( tomas, { algo => algo.esEncontrado(tomas) })

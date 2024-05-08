@@ -8,11 +8,3 @@ object espada {
 	method esEncontrado(personaje) {}
 	method desaparecer(){ game.removeVisual(self)}
 }
-object aldeano {
-	var property position = game.center()
-	
-	//method image() = 
-	method esEncontrado(personaje){
-		//eliminar aldeano encerrado, mostrar aldeano libre, sumarlo a la cantidad que encontro
-	}
-}

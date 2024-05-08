@@ -6,20 +6,30 @@ class Monstruos {
 	var vida
 	var poderBase
 	var pocion
+
+//Posicion e imagen para los monstruos en general
+	var property position
+	method image(){}
+	method aparecer(){
+		position = game.at(0.randomUpTo(game.width()).truncate(0), 0.randomUpTo(game.height()).truncate(0))
+		self.movimiento()
+	}	
+	method desaparecer(){ game.removeVisual(self)}
 	
-	var property position = game.center()
-	
-	//Para chequear las posiciones para la pocion
-	const property zonaAtaque = []
-	
+//Vida del monstruo
 	method recibirDanio(danio){
 		vida -= danio
 		if(vida <= 0){ self.morir()}
 	}
-	method morir(){	}
-	method soltarPocion(tipo){
-		//mostrar pocion en el mapa
+	method morir() {	
+		self.desaparecer()
+		self.soltarPocion()
 	}
+	method soltarPocion(pocion){}
+
+//Acciones independientes para cada tipo
+	method atacar(){}
+	method movimiento(){}
 }
 
 class Sombrio inherits Monstruos(vida = 100, poderBase = 10, pocion = "invisibilidad") {

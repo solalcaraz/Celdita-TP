@@ -3,39 +3,41 @@ import monstruos.*
 
 class Pociones{
 	var property position
-	
+
+//Aparicion de la pocion
 	method aparecer(posicionMonstruo) {
 		position = posicionMonstruo
 		self.image()
 		game.schedule(3000, { =>self.desaparecer()})
 	}
-	//LA IMAGEN CONVIENE TENERLA EN ESTA SUPER CLASE O EN CADA CLASE?
-	method image() {}
-	method desaparecer(){
-		//si despues de un tiempo no colisiona con el personaje se borra
-		game.removeVisual(self)
-	}
-	
+	method desaparecer(){ game.removeVisual(self)}
+		
 	method esEncontrado(personaje){}
 	
+	method image(){}
 	method activar(){}
-	//cada tipo delimita su efecto despues
 }
 
 class PocionInvisibilidad inherits Pociones {
+	 override method image() = "pocion_invisibilidad.png"
+
+//Poder que activa la pocion en el personaje	
 	//te da invisibilidad por un par de segundos y vida al maximo
-	override method image() = "pocion_invisivilidad.png"
-	
-	override method activar(){
-		super()
-		
-	}
+	 override method activar(){	}
 }
 
 class PocionFuerza inherits Pociones {
-	//te da poder extra
+	 override method image() = "pocion_fuerza.png"	
+
+//Poder que activa la pocion en el personaje
+	//te da poder extra, quizas por un tiempo determinado
+	 override method activar(){	}
 }
 
 class PocionAturdimiento inherits Pociones {
-	//deja quieto a los bichos que esten al rededor del personaje, tipo 3 posiciones al rededor
+	 override method image() = "pocion_aturdimiento.png"
+
+//Poder que activa la pocion en el personaje
+	//deja quieto a los bichos que esten al rededor del personaje, tipo 3 posiciones al rededor o bien a todos los personajes en general
+	 override method activar(){	}
 }
